@@ -19,6 +19,6 @@ Improve sleep quality and quantity worldwide!
 - Resources
   - Provides information via articles, and gadgets to improve sleep quality
   
- - Blog
-  - Allows users to interact and share their experiences.
+- Blog
+  - Allows users to interact and share experiences
  
