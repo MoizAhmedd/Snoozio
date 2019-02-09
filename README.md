@@ -4,7 +4,7 @@
 Improve sleep quality and quantity worldwide! 
 
 # Features
-- Survey
+- Survey(In progress)
    - Determines how much sleep you need by taking into account several factors
    
 - Creates a personalized sleeping schedule.
