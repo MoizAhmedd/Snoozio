@@ -1,0 +1,26 @@
+
+
+<form method = "post">
+  {%csrf_token%}
+
+  <section id = "name">
+    <h2>What is your name?</h2>
+  {{form.name}}
+  <a href = "#age">Next</a>
+  </section>
+
+  <section id = "age">
+    <h2> What is your age? </h2>
+    {{form.age}}
+  <a href = "#exercise">Next</a>
+  </section>
+
+  <section id = "exercise">
+    <h2> How many hours a week do you exercise? </h2>
+    {{form.exercise}}
+  </section>
+
+
+<button type = "submit">Submit</button>
+
+</form>
