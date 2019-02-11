@@ -11,3 +11,8 @@ class SurveyView(CreateView):
     model = Survey
     template_name = 'survey.html'
     fields = '__all__'
+
+class SurveyDataView(ListView):
+    model = Survey
+    template_name = 'data.html'
+    

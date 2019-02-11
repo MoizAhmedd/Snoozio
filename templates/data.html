@@ -1,0 +1,22 @@
+{% load sheets %}
+{% csv '1dXIFWLa90XZ06icHgpcvRZRgiHWAHrW3Hkip6y9642U/' as data %}
+
+<table>
+  <thead>
+    <tr>
+      {% for header in data.headers %}
+        <th>{{header}}</th>
+      {% endfor %}
+      </tr>
+  </thead>
+
+  <tbody>
+    {% for row in data.rows %}
+    <tr>
+      {% for cell in row %}
+        <td>{{cell}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
