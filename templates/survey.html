@@ -6,13 +6,13 @@
   <section id = "name">
     <h2>What is your name?</h2>
   {{form.name}}
-  <a href = "#age">Next</a>
+<button name="action" value="save"><a href = "#age">Next</a></button>
   </section>
 
   <section id = "age">
     <h2> What is your age? </h2>
     {{form.age}}
-  <a href = "#exercise">Next</a>
+  <button name="action" value="save"><a href = "#exercise">Next</a></button>
   </section>
 
   <section id = "exercise">
@@ -21,6 +21,6 @@
   </section>
 
 
-<button type = "submit">Submit</button>
+<button name="action" value="submit">Submit</button>
 
 </form>
