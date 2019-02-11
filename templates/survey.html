@@ -1,26 +1,10 @@
+{% load staticfiles %}
 
-
-<form method = "post">
-  {%csrf_token%}
-
-  <section id = "name">
-    <h2>What is your name?</h2>
-  {{form.name}}
-<button name="action" value="save"><a href = "#age">Next</a></button>
-  </section>
-
-  <section id = "age">
-    <h2> What is your age? </h2>
-    {{form.age}}
-  <button name="action" value="save"><a href = "#exercise">Next</a></button>
-  </section>
-
-  <section id = "exercise">
-    <h2> How many hours a week do you exercise? </h2>
-    {{form.exercise}}
-  </section>
-
-
-<button name="action" value="submit">Submit</button>
-
-</form>
+{% load django_typeform %}
+<html>
+    <body>
+        <div class="my-typeform"></div>
+        <script src="{% static 'django_typeform/embed.js' %}"></script>
+        {% typeforms_embed 'https://moiz790144.typeform.com/to/Rddljh' '.my-typeform' '{"hideHeaders": true, "hideFooter": true}' %}
+    </body>
+</html>
