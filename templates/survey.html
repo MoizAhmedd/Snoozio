@@ -1,10 +1,7 @@
 {% load staticfiles %}
 
-{% load django_typeform %}
-<html>
-    <body>
-        <div class="my-typeform"></div>
-        <script src="{% static 'django_typeform/embed.js' %}"></script>
-        {% typeforms_embed 'https://moiz790144.typeform.com/to/Rddljh' '.my-typeform' '{"hideHeaders": true, "hideFooter": true}' %}
-    </body>
-</html>
+<form action="{% url 'survey' %}" method="post">
+        {% csrf_token %}
+        {{ survey.as_p }}
+        <input type="submit" value="Save new car">
+    </form>
