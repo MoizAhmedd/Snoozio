@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
-<form action="{% url 'survey' %}" method="post">
+<form action="" method="POST">
         {% csrf_token %}
-        {{ survey.as_p }}
-        <input type="submit" value="Save new car">
+        {{ form.as_p }}
+        <input type="submit" value="Update">
     </form>

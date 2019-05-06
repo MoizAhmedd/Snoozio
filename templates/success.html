@@ -340,13 +340,12 @@
           </div>
 
           <div class = "testtime">
-              {% if user.profile.age %}
-                <h1>Yeaaa</h1>
-              {% else %}
-                <center><a href = "{% url 'survey' %}"<h1>Calculate your Sleep</h1></center>
-              {% endif %}
+            {% if user.profile.age %}
+            <h1>Your Optimum Sleep Time:{{user.profile.sleeptime}}</h1>
+            {% else %}
+              <a href = "{% url 'survey' user.pk%}"><h1>Calculate Your Sleep</h1></a>
+            {% endif %}
 
-            <h1>me</h1>
             
             </div>
           <!-- Content Row -->

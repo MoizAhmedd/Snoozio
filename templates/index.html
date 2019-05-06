@@ -46,8 +46,12 @@
         <div class="mx-auto text-center">
           <h1 class="mx-auto my-0 text-uppercase" >SNOOZIO</h1>
           <h2 style = "color:pink !important;" class="text-white-50 mx-auto mt-2 mb-5">Optimizing sleep.</h2>
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'success' user.pk%}" class="btn btn-primary js-scroll-trigger">View Dashboard</a>
+          {% else %} 
           <a href="{% url 'login'%}" class="btn btn-primary js-scroll-trigger">Login</a>
           <a href = "{% url 'signup'%}"class="btn btn-primary js-scroll-trigger">Create Account</a>
+          {% endif %}
         </div>
       </div>
     </header>

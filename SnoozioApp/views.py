@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views.generic import ListView, TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,UpdateView
 from .models import Profile
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -10,17 +10,19 @@ from django.contrib.auth import authenticate,login
 class HomePageView(TemplateView):
     template_name = 'index.html'
 
-
-
-
 class SuccessView(ListView):
-    model = User
+    model = Profile
     template_name = 'success.html'
-    context_object_name = 'user'
+    context_object_name = 'profile'
 
 class RedirectView(ListView):
     model = User
     template_name = 'redirect.html'
+
+class SurveyView(UpdateView):
+    model = Profile
+    template_name = 'survey.html'
+    fields = ['age','work_time','exercise_time','calories']
 
 def signup(request):
     if request.user.is_authenticated:
@@ -40,14 +42,5 @@ def signup(request):
 
     return render(request,'registration/signup.html',{'form':form})
 
-def survey(request):
-    if request.method == 'POST':
-        form = SurveyForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Survey Complete')
-    else:
-        form = SurveyForm()
-    
-    return render(request,'survey.html',{'survey':form})
+
 
