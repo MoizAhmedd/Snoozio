@@ -15,7 +15,8 @@ class Profile(models.Model):
     sleeptime = 0
 
 
-
+    def get_matchname(self):
+        return re.sub("\W+","",self.age)
 
     def __str__(self):
         return self.user.username
@@ -23,6 +24,16 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse('success',args=[str(self.user.id)])
 
+class SleepTimes(models.Model):
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    start_time = models.DateTimeField()
+
+    def __str__(self):
+        return self.user.username+str(self.pk)
+
+    def get_absolute_url(self):
+        return reverse('success',args=[str(self.user.id)])
+        
 def post_save_user_model_receiver(sender,instance,created,*args,**kwargs):
     if created:
         try:

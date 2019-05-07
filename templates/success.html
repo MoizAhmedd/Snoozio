@@ -336,7 +336,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <a href="{% url 'sleeptime' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Add Sleep Time</a>
           </div>
 
           <div class = "testtime">
@@ -346,7 +346,11 @@
               <a href = "{% url 'survey' user.pk%}"><h1>Calculate Your Sleep</h1></a>
             {% endif %}
 
-            
+            {% for time in sleeptime%}
+              {% if time.user == user %}
+                <h1>{{time.start_time}}</h1>
+              {% endif %}
+            {% endfor %}
             </div>
           <!-- Content Row -->
           <div class="row">

@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/',auth_views.LoginView.as_view(redirect_authenticated_user=True),name = 'login'),
     path('signup/',views.signup,name = 'signup'),
     path('success/<int:pk>',views.SuccessView.as_view(),name = 'success'),
+    path('sleeptime/',views.SleepTimeView.as_view(),name = 'sleeptime'),
     path('logout/',auth_views.LogoutView.as_view(),name = 'logout'),
     path('redirect/',views.RedirectView.as_view(),name = 'redirect'),
 ]
