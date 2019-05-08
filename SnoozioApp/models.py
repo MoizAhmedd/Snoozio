@@ -26,7 +26,9 @@ class Profile(models.Model):
 
 class SleepTimes(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
-    start_time = models.DateTimeField()
+    total_sleep = models.FloatField()
+
+    
 
     def __str__(self):
         return self.user.username+str(self.pk)

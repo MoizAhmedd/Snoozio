@@ -2,11 +2,12 @@ from django.shortcuts import render,redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView,UpdateView
 from .models import Profile,SleepTimes
-from django.db.models import Sum
+from django.db.models import Sum,F,Func
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from SnoozioApp.forms import SignUpForm,SurveyForm
 from django.contrib.auth import authenticate,login
+from django.http import JsonResponse
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = 'index.html'
@@ -19,6 +20,12 @@ class SuccessView(ListView):
         ctx = super(SuccessView,self).get_context_data(**kwargs)
         ctx['sleeptime'] = SleepTimes.objects.all()
         return ctx
+
+def get_data(request,*args,**kwargs):
+    data = {
+        "me":100
+    }
+    return JsonResponse(data)
 
 class RedirectView(ListView):
     model = User

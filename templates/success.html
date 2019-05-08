@@ -19,6 +19,21 @@
   <!-- Custom styles for this template-->
   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
 
+  <script>
+        {% block jquery %}
+          var endpoint = '/api/data'
+
+          $.ajax({
+            method: "GET",
+            url: endpoint,
+            success:function(data){
+              console.log(data.me)
+            }
+          })
+
+        {% endblock %}
+      </script>
+
 </head>
 
 <body id="page-top">
@@ -348,7 +363,7 @@
 
             {% for time in sleeptime%}
               {% if time.user == user %}
-                <h1>{{time.start_time}}</h1>
+                <h1>{{time.total_sleep}}</h1>
               {% endif %}
             {% endfor %}
             </div>
