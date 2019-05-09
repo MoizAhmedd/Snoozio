@@ -8,6 +8,10 @@ from django.contrib.auth.models import User
 from SnoozioApp.forms import SignUpForm,SurveyForm
 from django.contrib.auth import authenticate,login
 from django.http import JsonResponse
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = 'index.html'
@@ -26,6 +30,18 @@ def get_data(request,*args,**kwargs):
         "me":100
     }
     return JsonResponse(data)
+
+class ChartData(APIView):
+
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        usernames = [user.username for user in User.objects.all()]
+        return Response(usernames)
 
 class RedirectView(ListView):
     model = User

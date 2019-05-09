@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'SnoozioApp',
     'django_typeform.apps.DjangoTypeformConfig',
-    'chartjs'
+    'chartjs',
+    'rest_framework'
 
 ]
 
