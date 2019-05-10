@@ -9,6 +9,7 @@ from SnoozioApp.forms import SignUpForm,SurveyForm
 from django.contrib.auth import authenticate,login
 from django.http import JsonResponse
 
+from django.views.generic import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -16,10 +17,17 @@ from rest_framework.response import Response
 class HomePageView(TemplateView):
     template_name = 'index.html'
 
+class ChartView(TemplateView):
+    template_name = 'chart.html'
+
 class SuccessView(ListView):
     model = Profile
     template_name = 'success.html'
     context_object_name = 'profile'
+
+    for sleeptime in SleepTimes.objects.all():
+        print(sleeptime.total_sleep,type(sleeptime.total_sleep))
+    
     def get_context_data(self,**kwargs):
         ctx = super(SuccessView,self).get_context_data(**kwargs)
         ctx['sleeptime'] = SleepTimes.objects.all()
@@ -32,7 +40,6 @@ def get_data(request,*args,**kwargs):
     return JsonResponse(data)
 
 class ChartData(APIView):
-
     authentication_classes = []
     permission_classes = []
 
@@ -40,8 +47,16 @@ class ChartData(APIView):
         """
         Return a list of all users.
         """
-        usernames = [user.username for user in User.objects.all()]
-        return Response(usernames)
+        labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+        sleeptimes = {}
+        for sleeptime in SleepTimes.objects.all():
+            if sleeptime.user.username not in sleeptimes:
+                sleeptimes[sleeptime.user.username] = [sleeptime.total_sleep]
+            else:
+                sleeptimes[sleeptime.user.username].append(sleeptime.total_sleep)
+            
+        return Response(sleeptimes)
+        
 
 class RedirectView(ListView):
     model = User
