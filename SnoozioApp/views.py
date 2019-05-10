@@ -54,7 +54,7 @@ class ChartData(APIView):
                 sleeptimes[sleeptime.user.username] = [sleeptime.total_sleep]
             else:
                 sleeptimes[sleeptime.user.username].append(sleeptime.total_sleep)
-            
+        print(sleeptimes)
         return Response(sleeptimes)
         
 

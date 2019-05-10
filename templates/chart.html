@@ -4,7 +4,7 @@
 
 <canvas id="myChart" width="50" height="50"></canvas>
 <script>
-var endpoint = 'api/chart/data'
+var endpoint = '../api/chart/data'
 var defaultData = []
 var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
 
@@ -12,13 +12,15 @@ $.ajax({
     method:"GET",
     url:endpoint,
     success:function(data){
-        defaultData = data.sleeptimes
+        console.log(data.ahmed)
+        defaultData = data.ahmed
+        var ctx = document.getElementById("myChart");
         var myChart = new Chart(ctx,{
             type: 'bar',
             data: {
                 labels:labels,
                 datasets: [{
-                    label: '# of votes',
+                    label: 'Hours of Sleep',
                     data: defaultData,
                 }]
             }
